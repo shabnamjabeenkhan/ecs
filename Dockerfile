@@ -11,6 +11,8 @@ RUN yarn build
 FROM nginx:1.30.3-alpine
 COPY --from=builder /app/build /usr/share/nginx/html
 RUN chown -R nginx:nginx /var/cache/nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+RUN chown nginx:nginx /run
 USER nginx
-COPY nginx.config /etc/nginx/conf.d/default.conf
+EXPOSE 8080
 
