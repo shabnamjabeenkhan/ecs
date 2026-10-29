@@ -6,7 +6,6 @@ RUN yarn install
 RUN yarn build
 
 
-
 # Stage Two
 FROM nginx:1.30.3-alpine
 COPY --from=builder /app/build /usr/share/nginx/html
